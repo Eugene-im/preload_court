@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .preload {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            align-content: center;
+            justify-content: center;
+            background: linear-gradient(90deg, rgb(39, 56, 153), rgb(73, 109, 211));
+            /* background: linear-gradient(#e66465, #9198e5); */
+            opacity: 1;
+            animation: 3s alternate fade forwards;
+        }
+       
+        .radial-progress {
+            width: 180px;
+            height: 180px;
+            background-color: #d6dadc;
+            border-radius: 50%;
+        }
+
+        .radial-progress .circle .mask,
+        .radial-progress .circle .fill,
+        .radial-progress .circle .shadow {
+            width: 180px;
+            height: 180px;
+            position: absolute;
+            border-radius: 50%;
+        }
+
+        /* .radial-progress .circle .shadow {
+      box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2) inset;
+    } */
+        .radial-progress .circle .mask,
+        .radial-progress .circle .fill {
+            -webkit-backface-visibility: hidden;
+            transition: -webkit-transform 1s;
+            transition: -ms-transform 1s;
+            transition: transform 1s;
+            border-radius: 50%;
+        }
+
+        .radial-progress .circle .mask {
+            clip: rect(0px, 180px, 180px, 90px);
+        }
+
+        .radial-progress .circle .mask .fill {
+            clip: rect(0px, 90px, 180px, 0px);
+            background-color: #97a71d;
+            /* background-color: #cec1a4; */
+        }
+
+        .radial-progress .inset {
+            width: 176px;
+            height: 176px;
+            position: absolute;
+            margin-left: 2px;
+            margin-top: 2px;
+            background: linear-gradient(90deg, #364fb2, #3b58bc);
+            border-radius: 50%;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            align-items: center;
+        }
+        .radial-progress .inset img{
+            margin: 10px 0 0 2px;
+        }
+
+        .radial-progress .circle .mask.full,
+        .radial-progress .circle .fill.fix,
+        .radial-progress .circle .fill {
+            animation: 3s alternate circle;
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+        }
+
+        @keyframes circle {
+            0% {
+
+                -webkit-transform: rotate(0deg);
+                -ms-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+
+            100% {
+
+                -webkit-transform: rotate(180deg);
+                -ms-transform: rotate(180deg);
+                transform: rotate(180deg);
+            }
+        }
+        @keyframes fade{
+            90%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0;
+            }           
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preload">
+        <div class="radial-progress">
+            <div class="circle">
+                <div class="mask full">
+                    <div class="fill"></div>
+                </div>
+                <div class="mask half">
+                    <div class="fill"></div>
+                    <div class="fill fix"></div>
+                </div>
+                <div class="shadow"></div>
+            </div>
+            <div class="inset">
+                <img src="https://7aac.gov.ua/wp-content/themes/7aac/img/logo_svg/1.svg" alt="7aac__logo">
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>
